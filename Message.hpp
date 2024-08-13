@@ -5,19 +5,18 @@
 class Message
 {
 private:
-	friend class boost::serialization::access;
+	
+	std::string _color;
 	std::string _name;
 	std::string _message;
 
-
-	template<class Archive>
-	void serialize(Archive& archive);
 public:
 	Message() = default;
-	Message(const std::string& name, const std::string& message);
+	Message(const std::string& color, const std::string& name, const std::string& message);
 	~Message() = default;
 	void save(std::ostream& ostream);
 	void load(std::istream& istream);
+	std::string getColor();
 	std::string getName();
 	std::string getMessage();
 };
